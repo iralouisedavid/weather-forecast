@@ -12,7 +12,7 @@ To use the Weather Forecast App, follow these steps:
 * Run the command flutter pub get in the terminal to install dependencies.
 * Create a free account on OpenWeather API and get your API key.
 * In the packages/weather/lib/api.dart file, replace the value of apiKey with your API key.
-  '''const String apiKey = 'your_api_key_here';'''
+  ```const String apiKey = 'your_api_key_here';```
 * Run the app using the flutter run command.
 
 ## Usage
