@@ -11,21 +11,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchController = TextEditingController(); //search bar
   List<Location> _searchResults = []; //list to store search results
-  //ValueNotifier<List<Location>> _searchResultsNotifier = ValueNotifier<List<Location>>([]);
 
   void _searchLocation(String query) async {
-    List<Location> results = await Search.searchLocationList(query); // call searchLocationlist to get results
+    List<Location> results = await Search.searchLocationList(query, context); // call searchLocationlist to get results
     setState(() {
       _searchResults = results;
     });
   }
 
-  // void _searchLocation(String query) async {
-  //   List<Location> results = await Search.searchLocationList(query); // Call the searchLocationList method to get a list of Location objects that match the search query
-  //   _searchResultsNotifier.value = results; // Update the value of the _searchResultsNotifier with the new search results
-  // }
-
-  void _navigateToWeatherScreen(Location location) { //navgate to weather screen with the selected location
+  void _navigateToWeatherScreen(BuildContext context, Location location) { //navgate to weather screen with the selected location
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -43,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return ListTile(
             title: Text(location.name),
             subtitle: Text('Latitude: ${location.latitude},  Longitude: ${location.longitude}'),
-            onTap: () => _navigateToWeatherScreen(location),
+            onTap: () => _navigateToWeatherScreen(context, location),
           );
         },
       ),
@@ -82,16 +76,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             )
                 : _buildSearchResultsList(),
-            // _searchResultsNotifier.value.isEmpty
-            //     ? const Expanded(
-            //   child: Center(
-            //     child: Text(
-            //       'Search Results',
-            //       style: TextStyle(fontSize: 16.0),
-            //     ),
-            //   ),
-            // )
-            //     : _buildSearchResultsList(),
           ],
         ),
       ),

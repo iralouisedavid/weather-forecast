@@ -3,7 +3,7 @@ description: A Flutter project that provides the current weather forecasts
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0
+version: 1.1.0
 
 environment:
   sdk: '>=2.19.3 <3.0.0'
